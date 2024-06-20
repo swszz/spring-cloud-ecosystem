@@ -18,7 +18,7 @@
 - Short lived microservices (tasks)
 - Consumer-driven and producer-driven contract testing
 
-## Training For Spring Cloud Features
+## Training for Spring Cloud Features
 - Distributed/versioned configuration
 - Service registration and discovery
 - Routing
@@ -29,7 +29,7 @@
 - Short lived microservices (tasks)
 - Consumer-driven and producer-driven contract testing
 
-## Advanced Training For Spring Cloud & K8S
+## Advanced Training for Spring Cloud & K8S
 - gPRC
 - Service registration and discovery
 - JVM Tuning
