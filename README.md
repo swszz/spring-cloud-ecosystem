@@ -7,6 +7,16 @@
 - What is Cloud Native?
 - Why Cloud Native?
 
+touch distributed_versioned_configuration.md
+touch service_registration_and_discovery.md
+touch routing.md
+touch service-to-service_calls.md
+touch load_balancing.md
+touch circuit_breakers.md
+touch distributed_messaging.md
+touch short_lived_microservices.md
+touch consumer-driven_and_producer-driven_contract_testing.md
+
 ## Concept of Cloud Native Features
 - Distributed/versioned configuration
 - Service registration and discovery
