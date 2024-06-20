@@ -3,9 +3,9 @@
 - Spring 생태계 내에서 쉽게 활용할 수 있도록 Spring Cloud 생태계에 대해 학습합니다.
 
 # 목차
-## Cloud Native
-- 클라우드 네이티브란 무엇인가?
-- 왜 클라우드 네이티브를 학습해야 하는가?
+## Introduction
+- What is Cloud Native?
+- Why Cloud Native?
 
 ## Concept of Cloud Native Features
 - Distributed/versioned configuration
