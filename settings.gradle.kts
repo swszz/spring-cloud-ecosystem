@@ -1,7 +1,15 @@
 rootProject.name = "spring-cloud-ecosystem"
 
 
-include()
+include(
+    "training_for_spring_cloud_features",
+    "training_for_spring_cloud_features:bom",
+    "training_for_spring_cloud_features:bom:trace",
+
+    "training_for_spring_cloud_features:app",
+    "training_for_spring_cloud_features:app:cookie",
+    "training_for_spring_cloud_features:app:cookie:shop",
+)
 
 pluginManagement {
     val kotlinVersion = "1.9.24"

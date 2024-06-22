@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: cookie-shop
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+    propagation:
+      consume: b3
+      produce: b3_multi
