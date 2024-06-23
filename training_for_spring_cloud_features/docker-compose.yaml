@@ -1,0 +1,32 @@
+version: '2.4'
+
+networks:
+  service-net:
+    driver: bridge
+
+services:
+  zipkin:
+    image: "openzipkin/zipkin"
+    container_name: "zipkin"
+    environment:
+      - "STORAGE_TYPE=mem"
+    ports:
+      - "9411:9411"
+    networks:
+      - "service-net"
+
+  service-discovery:
+    image: "service-discovery:latest"
+    ports:
+      - "8761:8761"
+    networks:
+      - "service-net"
+
+  resource-monitor:
+    image: "resource-monitor:latest"
+    ports:
+      - "9090:9090"
+    networks:
+      - "service-net"
+    depends_on:
+      - "service-discovery"
