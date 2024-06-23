@@ -9,6 +9,8 @@ include(
     "training_for_spring_cloud_features:infra",
     "training_for_spring_cloud_features:infra:resource-monitor",
     "training_for_spring_cloud_features:infra:service-discovery",
+
+    "training_for_spring_cloud_features:app:cookie-shop",
 )
 
 pluginManagement {
