@@ -10,4 +10,9 @@ eureka:
     instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}
   client:
     service-url:
-      defaultZone: http://service-discovery:8761/eureka/
+      defaultZone: ${EUREKA_SERVICE_URL}/eureka/
+
+management:
+  zipkin:
+    tracing:
+      endpoint: ${ZIPKIN_SERVICE_URL}/api/v2/spans

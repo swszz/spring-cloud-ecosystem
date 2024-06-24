@@ -1,0 +1,67 @@
+spring:
+  application:
+    name: api-gateway
+  boot:
+    admin:
+      client:
+        instance:
+          name: ${spring.application.name}
+          service-url: ${ADMIN_CLIENT_SERVICE_URL}
+        auto-registration: true
+        url: ${ADMIN_SERVICE_URL}
+  cloud:
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allow-credentials: true
+            allowedHeaders:
+              - "*"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+              - PATCH
+              - HEAD
+            allowedOriginPatterns:
+              - "*"
+            exposedHeaders:
+              - "Content-Disposition"
+      routes:
+        - id: cookie-shop
+          uri: lb://COOKIE-SHOP
+          predicates:
+            - Path=/cookies
+
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}
+  client:
+    service-url:
+      defaultZone: ${EUREKA_SERVICE_URL}/eureka/
+
+management:
+  zipkin:
+    tracing:
+      endpoint: ${ZIPKIN_SERVICE_URL}/api/v2/spans
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, metrics, logfile, env
+  endpoint:
+    health:
+      show-details: always
+  tracing:
+    sampling:
+      probability: 1.0
+    propagation:
+      consume: b3
+      produce: b3_multi
+logging:
+  file:
+    name: ./logs/application.log
+
+server:
+  port: 9080

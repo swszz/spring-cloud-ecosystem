@@ -3,7 +3,7 @@ eureka:
     instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: ${EUREKA_SERVICE_URL}/eureka/
 
 spring:
   application:
@@ -13,11 +13,14 @@ spring:
       client:
         instance:
           name: ${spring.application.name}
-          service-url: "http://localhost:8080"
-        url: "http://localhost:9090"
+          service-url: ${ADMIN_CLIENT_SERVICE_URL}
         auto-registration: true
+        url: ${ADMIN_SERVICE_URL}
 
 management:
+  zipkin:
+    tracing:
+      endpoint: ${ZIPKIN_SERVICE_URL}/api/v2/spans
   endpoints:
     web:
       exposure:
@@ -31,7 +34,9 @@ management:
     propagation:
       consume: b3
       produce: b3_multi
-
 logging:
   file:
     name: ./logs/application.log
+
+server:
+  port: 8080

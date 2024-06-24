@@ -21,12 +21,47 @@ services:
       - "8761:8761"
     networks:
       - "service-net"
+    depends_on:
+      - "zipkin"
 
   resource-monitor:
     image: "resource-monitor:latest"
     ports:
       - "9090:9090"
+    environment:
+      - EUREKA_SERVICE_URL=http://service-discovery:8761
     networks:
       - "service-net"
     depends_on:
       - "service-discovery"
+
+  api-gateway:
+    image: "api-gateway:latest"
+    ports:
+      - "9080:9080"
+    networks:
+      - "service-net"
+    environment:
+      - EUREKA_SERVICE_URL=http://service-discovery:8761
+      - ADMIN_CLIENT_SERVICE_URL=http://api-gateway:9080
+      - ADMIN_CLIENT_URL=http://resource-monitor:9090
+      - ZIPKIN_SERVICE_URL= http://zipkin:9411
+    depends_on:
+      - "service-discovery"
+      - "resource-monitor"
+
+  cookie-shop:
+    image: "cookie-shop:latest"
+    ports:
+      - "8080:8080"
+    networks:
+      - "service-net"
+    environment:
+      - EUREKA_SERVICE_URL=http://service-discovery:8761
+      - ADMIN_CLIENT_SERVICE_URL=http://cookie-shop:8080
+      - ADMIN_CLIENT_URL=http://resource-monitor:9090
+      - ZIPKIN_SERVICE_URL= http://zipkin:9411
+    depends_on:
+      - "service-discovery"
+      - "resource-monitor"
+      - "api-gateway"
