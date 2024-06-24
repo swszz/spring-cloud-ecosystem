@@ -3,12 +3,14 @@ rootProject.name = "spring-cloud-ecosystem"
 
 include(
     "training_for_spring_cloud_features",
-    "training_for_spring_cloud_features:bom",
-    "training_for_spring_cloud_features:bom:trace",
+    "training_for_spring_cloud_features:lib",
+    "training_for_spring_cloud_features:lib:trace",
 
-    "training_for_spring_cloud_features:app",
-    "training_for_spring_cloud_features:app:cookie",
-    "training_for_spring_cloud_features:app:cookie:shop",
+    "training_for_spring_cloud_features:infra",
+    "training_for_spring_cloud_features:infra:resource-monitor",
+    "training_for_spring_cloud_features:infra:service-discovery",
+
+    "training_for_spring_cloud_features:app:cookie-shop",
 )
 
 pluginManagement {
