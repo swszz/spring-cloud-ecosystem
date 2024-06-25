@@ -1,22 +1,6 @@
-eureka:
-  instance:
-    instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}
-  client:
-    service-url:
-      defaultZone: ${EUREKA_SERVICE_URL}/eureka/
-
 spring:
-  profiles:
-    active: default
-  config:
-    import: configserver:${CONFIGURATION_SERVER_URL}
-  cloud:
-    config:
-      discovery:
-        enabled: true
-        service-id: ${CONFIGURATION_SERVER_ID}
   application:
-    name: cookie-shop
+    name: configuration-server
   boot:
     admin:
       client:
@@ -25,6 +9,23 @@ spring:
           service-url: ${ADMIN_CLIENT_SERVICE_URL}
         auto-registration: true
         url: ${ADMIN_SERVICE_URL}
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/swszz/spring-cloud-ecosystem
+          skipSslValidation: true
+          try-master-branch: false
+          default-label: main
+          search-paths:
+            - /training_for_spring_cloud_features/configuration
+
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}
+  client:
+    service-url:
+      defaultZone: ${EUREKA_SERVICE_URL}/eureka/
 
 management:
   zipkin:
@@ -48,4 +49,4 @@ logging:
     name: ./logs/application.log
 
 server:
-  port: 8080
+  port: 8888
