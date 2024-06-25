@@ -9,6 +9,7 @@ cd {$repository-root}/training_for_spring_cloud_features
 docker build -t resource-monitor infra/resource-monitor/.
 docker build -t service-discovery infra/service-discovery/.
 docker build -t api-gateway infra/api-gateway/.
+docker build -t configuration-server infra/configuration-server/.
 docker build -t cookie-shop app/cookie-shop/.
 ```
 

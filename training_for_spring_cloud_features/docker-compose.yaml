@@ -50,6 +50,21 @@ services:
       - "service-discovery"
       - "resource-monitor"
 
+  "configuration-server":
+    image: "configuration-server:latest"
+    ports:
+      - "8888:8888"
+    networks:
+      - "service-net"
+    environment:
+      - EUREKA_SERVICE_URL=http://service-discovery:8761
+      - ADMIN_CLIENT_SERVICE_URL=http://configuration-server:8888
+      - ADMIN_CLIENT_URL=http://resource-monitor:9090
+      - ZIPKIN_SERVICE_URL=http://zipkin:9411
+    depends_on:
+      - "service-discovery"
+      - "resource-monitor"
+
   cookie-shop:
     image: "cookie-shop:latest"
     ports:
@@ -60,8 +75,11 @@ services:
       - EUREKA_SERVICE_URL=http://service-discovery:8761
       - ADMIN_CLIENT_SERVICE_URL=http://cookie-shop:8080
       - ADMIN_CLIENT_URL=http://resource-monitor:9090
-      - ZIPKIN_SERVICE_URL= http://zipkin:9411
+      - ZIPKIN_SERVICE_URL=http://zipkin:9411
+      - CONFIGURATION_SERVER_URL=http://configuration-server:8888
+      - CONFIGURATION_SERVER_ID=CONFIGURATION-SERVER
     depends_on:
       - "service-discovery"
       - "resource-monitor"
       - "api-gateway"
+      - "configuration-server"
