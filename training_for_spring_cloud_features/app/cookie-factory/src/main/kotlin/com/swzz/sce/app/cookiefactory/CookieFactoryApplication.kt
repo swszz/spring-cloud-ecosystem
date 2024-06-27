@@ -1,4 +1,4 @@
-package com.swzz.sce.infra.servicediscovery
+package com.swzz.sce.app.cookiefactory
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
@@ -6,8 +6,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient
 
 @SpringBootApplication
 @EnableDiscoveryClient
-class ServiceDiscoveryApplication
+class CookieFactoryApplication
 
 fun main(args: Array<String>) {
-    runApplication<ServiceDiscoveryApplication>(*args)
+    runApplication<CookieFactoryApplication>(*args)
 }

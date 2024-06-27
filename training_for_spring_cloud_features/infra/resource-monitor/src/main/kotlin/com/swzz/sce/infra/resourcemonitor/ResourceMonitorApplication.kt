@@ -8,8 +8,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient
 @SpringBootApplication
 @EnableAdminServer
 @EnableDiscoveryClient
-internal class ResourceMonitorApplication
+class ResourceMonitorApplication
 
-internal fun main(args: Array<String>) {
+fun main(args: Array<String>) {
     runApplication<ResourceMonitorApplication>(*args)
 }

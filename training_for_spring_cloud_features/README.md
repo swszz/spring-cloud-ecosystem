@@ -11,6 +11,7 @@ docker build -t service-discovery infra/service-discovery/.
 docker build -t api-gateway infra/api-gateway/.
 docker build -t configuration-server infra/configuration-server/.
 docker build -t cookie-shop app/cookie-shop/.
+docker build -t cookie-factory app/cookie-factory/.
 ```
 
 ### 2. run docker compose

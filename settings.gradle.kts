@@ -13,6 +13,7 @@ include(
     "training_for_spring_cloud_features:infra:configuration-server",
 
     "training_for_spring_cloud_features:app:cookie-shop",
+    "training_for_spring_cloud_features:app:cookie-factory",
 )
 
 pluginManagement {

@@ -23,6 +23,34 @@ services:
       - "service-net"
     depends_on:
       - "zipkin"
+  zookeeper:
+    image: "confluentinc/cp-zookeeper:latest"
+    environment:
+      ZOOKEEPER_SERVER_ID: 1
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+      ZOOKEEPER_INIT_LIMIT: 5
+      ZOOKEEPER_SYNC_LIMIT: 2
+    ports:
+      - "22181:2181"
+    networks:
+      - "service-net"
+  kafka:
+    image: "confluentinc/cp-kafka:latest"
+    ports:
+      - "29092:29092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+    depends_on:
+      - "zookeeper"
+    networks:
+      - "service-net"
 
   resource-monitor:
     image: "resource-monitor:latest"
@@ -78,8 +106,31 @@ services:
       - ZIPKIN_SERVICE_URL=http://zipkin:9411
       - CONFIGURATION_SERVER_URL=http://configuration-server:8888
       - CONFIGURATION_SERVER_ID=CONFIGURATION-SERVER
+      - KAFKA_BROKER_URL=kafka:9092
     depends_on:
       - "service-discovery"
       - "resource-monitor"
       - "api-gateway"
       - "configuration-server"
+      - "kafka"
+
+  cookie-factory:
+    image: "cookie-factory:latest"
+    ports:
+      - "8081:8081"
+    networks:
+      - "service-net"
+    environment:
+      - EUREKA_SERVICE_URL=http://service-discovery:8761
+      - ADMIN_CLIENT_SERVICE_URL=http://cookie-shop:8080
+      - ADMIN_CLIENT_URL=http://resource-monitor:9090
+      - ZIPKIN_SERVICE_URL=http://zipkin:9411
+      - CONFIGURATION_SERVER_URL=http://configuration-server:8888
+      - CONFIGURATION_SERVER_ID=CONFIGURATION-SERVER
+      - KAFKA_BROKER_URL=kafka:9092
+    depends_on:
+      - "service-discovery"
+      - "resource-monitor"
+      - "api-gateway"
+      - "configuration-server"
+      - "kafka"
