@@ -6,25 +6,8 @@ eureka:
       defaultZone: ${EUREKA_SERVICE_URL}/eureka/
 
 spring:
-  profiles:
-    active: default
-  config:
-    import: configserver:${CONFIGURATION_SERVER_URL}
-  cloud:
-    config:
-      discovery:
-        enabled: true
-        service-id: ${CONFIGURATION_SERVER_ID}
-    stream:
-      kafka:
-        binder:
-          brokers: ${KAFKA_BROKER_URL}
-      bindings:
-        orderProducer-out-0:
-          destination: order
-          content-type: application/json
   application:
-    name: cookie-shop
+    name: cookie-factory
   boot:
     admin:
       client:
@@ -33,6 +16,14 @@ spring:
           service-url: ${ADMIN_CLIENT_SERVICE_URL}
         auto-registration: true
         url: ${ADMIN_SERVICE_URL}
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: ${KAFKA_BROKER_URL}
+      bindings:
+        orderConsumer-in-0:
+          destination: order
 
 management:
   zipkin:
@@ -56,4 +47,4 @@ logging:
     name: ./logs/application.log
 
 server:
-  port: 8080
+  port: 8082

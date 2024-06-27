@@ -6,8 +6,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient
 
 @SpringBootApplication
 @EnableDiscoveryClient
-internal class CookieShopApplication
+class CookieShopApplication
 
-internal fun main(args: Array<String>) {
+fun main(args: Array<String>) {
     runApplication<CookieShopApplication>(*args)
 }

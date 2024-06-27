@@ -1,7 +1,6 @@
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
-    implementation("org.springframework.cloud:spring-cloud-starter-config")
     implementation("org.springframework.cloud:spring-cloud-starter-stream-kafka")
     implementation("org.springframework.cloud:spring-cloud-stream-binder-kafka")
     implementation("de.codecentric:spring-boot-admin-starter-client:3.3.0")
