@@ -14,6 +14,7 @@ include(
 
     "training_for_spring_cloud_features:app:cookie-shop",
     "training_for_spring_cloud_features:app:cookie-factory",
+    "training_for_spring_cloud_features:app:automation-order",
 )
 
 pluginManagement {
