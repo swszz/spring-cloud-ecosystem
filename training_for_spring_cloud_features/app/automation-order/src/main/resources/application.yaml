@@ -1,0 +1,52 @@
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}
+  client:
+    service-url:
+      defaultZone: ${EUREKA_SERVICE_URL}/eureka/
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}?useMysqlMetadata=true
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    driver-class-name: org.mariadb.jdbc.Driver
+  sql:
+    init:
+      platform: org.hibernate.dialect.MariaDB106Dialect
+  cloud:
+    task:
+      initialize-enabled: true
+  application:
+    name: automation-order
+  boot:
+    admin:
+      client:
+        instance:
+          name: ${spring.application.name}
+          service-url: ${ADMIN_CLIENT_SERVICE_URL}
+        auto-registration: true
+        url: ${ADMIN_SERVICE_URL}
+
+management:
+  zipkin:
+    tracing:
+      endpoint: ${ZIPKIN_SERVICE_URL}/api/v2/spans
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, metrics, logfile, env
+  endpoint:
+    health:
+      show-details: always
+  tracing:
+    sampling:
+      probability: 1.0
+    propagation:
+      consume: b3
+      produce: b3_multi
+logging:
+  file:
+    name: ./logs/application.log
+
+server:
+  port: 8821
