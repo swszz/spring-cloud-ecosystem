@@ -21,6 +21,7 @@ spring:
       kafka:
         binder:
           brokers: ${KAFKA_BROKER_URL}
+          enable-observation: true
       bindings:
         orderConsumer-in-0:
           destination: order
