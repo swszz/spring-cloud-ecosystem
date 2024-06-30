@@ -5,35 +5,35 @@
 
 ---
 
-## Ecosystem
+## ecosystem
 
 ![spring-cloud-ecosystem](./resources/images/spring-cloud-ecosystem.png)
 
 ---
 
-## TOC
+## toc
 
-### Introduction
+### introduction
 
-- What is Cloud Native?
-- Why Cloud Native?
+- what is Cloud Native?
+- why Cloud Native?
 
-### Concept of Cloud Native Features
+### concept of cloud native features
 
-- Distributed tracing
-- Distributed/versioned configuration
-- Service registration and discovery
-- Routing
-- Service-to-service calls
-- Load balancing
-- Circuit Breakers
-- Distributed messaging
-- Short lived microservices (tasks)
-- Consumer-driven and producer-driven contract testing
+- distributed tracing
+- distributed/versioned configuration
+- service registration and discovery
+- routing
+- service-to-service calls
+- load balancing
+- circuit Breakers
+- distributed messaging
+- short lived microservices (tasks)
+- consumer-driven and producer-driven contract testing
 
 ---
 
-## Install
+## install
 
 ### 0. install docker from [Docker](https://docs.docker.com/engine/install/)
 
