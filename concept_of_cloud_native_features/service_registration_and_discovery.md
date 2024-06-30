@@ -1,4 +1,5 @@
 # service registration and discovery
+---
 
 ## 세 줄 요약
 
@@ -8,6 +9,8 @@
   에서는 [consul](https://cloud.spring.io/spring-cloud-consul/reference/html/#spring-cloud-consul-discovery), [eureka](https://cloud.spring.io/spring-cloud-netflix/reference/html/#service-discovery-eureka-clients), [k8s](https://docs.spring.io/spring-cloud-kubernetes/reference/spring-cloud-kubernetes-discoveryserver.html)
   등의 구현체를 제공한다.
 
+---
+
 ## 설명
 
 ### 간략 소개
@@ -15,6 +18,7 @@
 애플리케이션들은 서로 데이터를 주고 받으며 어떠한 가치를 생성하는데, 주로 ip & port를 활용해 통신한다.
 마이크로서비스 기반 애플리케이션은 서비스 인스턴스의 수와 위치가 동적으로 변경돼 클라이언트 입장에서는 고정된 ip & port 값을 참조해 사용하기 어렵다.
 그래서 클라이언트가 동적으로 변경되는 서비스 인스턴스 집합에 요청할 수 있는 매커니즘이 필요하고, 이러한 가치는 service discovery라는 개념으로 제공되고 있다.
+---
 
 ### 구현 방법
 
@@ -52,10 +56,14 @@
 - 로드밸런서를 구축해야 한다.
     - spring cloud stack에서는 `lb` 라는 protocol을 제공하기 때문에 구축 난이도가 낮다!
 
+---
+
 ## 활용 예시
 
 - 서비스에 Read Traffic이 폭발적으로 늘어날 때, 즉 Query를 담당하는 서비스 인스턴스의 수가 부족할 때 Query 인스턴스에 대해 Scale Out을 수행하고 이를 쉽게 참조할 수 있다.
 - k8s service domain과 같이 인프라/플랫폼에 종속적인 dns 도구를 사용하지 않고 어플리케이션 생태계에서 해결할 수 있다.
+
+---
 
 ## references
 
