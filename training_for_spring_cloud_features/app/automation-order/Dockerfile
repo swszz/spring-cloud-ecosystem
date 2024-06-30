@@ -6,6 +6,8 @@ VOLUME /tmp
 
 ARG JAR_FILE=build/libs/*.jar
 
-COPY ${JAR_FILE} app.jar
+RUN apk update && apk add bash
+COPY wait-for-it.sh wait-for-it.sh
+RUN chmod +x wait-for-it.sh
 
-ENTRYPOINT ["java","-jar","/app.jar"]
+COPY ${JAR_FILE} app.jar

@@ -16,6 +16,7 @@ services:
       - "service-net"
 
   service-discovery:
+    build: "infra/service-discovery"
     image: "service-discovery:latest"
     ports:
       - "8761:8761"
@@ -63,6 +64,7 @@ services:
       - "service-discovery"
 
   api-gateway:
+    build: "infra/api-gateway"
     image: "api-gateway:latest"
     ports:
       - "9080:9080"
@@ -78,6 +80,7 @@ services:
       - "resource-monitor"
 
   "configuration-server":
+    build: "infra/configuration-server"
     image: "configuration-server:latest"
     ports:
       - "8888:8888"
@@ -224,6 +227,7 @@ services:
       - '3306:3306'
 
   cookie-shop:
+    build: "app/cookie-shop"
     image: "cookie-shop:latest"
     ports:
       - "8080:8080"
@@ -243,8 +247,13 @@ services:
       - "api-gateway"
       - "configuration-server"
       - "kafka"
+    command: >
+      /bin/sh -c "
+        ./wait-for-it.sh -t 360 configuration-server:8888;
+        java -jar /app.jar"
 
   cookie-factory:
+    build: "app/cookie-factory"
     image: "cookie-factory:latest"
     ports:
       - "8081:8081"
@@ -264,8 +273,13 @@ services:
       - "api-gateway"
       - "configuration-server"
       - "kafka"
+    command: >
+      /bin/sh -c "
+        ./wait-for-it.sh -t 360 configuration-server:8888;
+        java -jar /app.jar"
 
   automation-order:
+    build: "app/automation-order"
     image: "automation-order:latest"
     ports:
       - "8821:8821"
@@ -283,4 +297,11 @@ services:
       - "service-discovery"
       - "resource-monitor"
       - "api-gateway"
+      - "cookie-shop"
       - "dataflow-server"
+    command: >
+      /bin/sh -c "
+        ./wait-for-it.sh -t 60 configuration-server:8888;
+        ./wait-for-it.sh -t 60 api-gateway:9080;
+        ./wait-for-it.sh -t 60 cookie-shop:8080;
+        java -jar /app.jar"

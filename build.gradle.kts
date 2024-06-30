@@ -15,6 +15,12 @@ allprojects {
     }
 }
 
+tasks {
+    bootJar {
+        enabled = false
+    }
+}
+
 
 subprojects {
     apply {
