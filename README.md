@@ -79,4 +79,20 @@ docker-compose -f ./training_for_spring_cloud_features/docker-compose.yaml up
     - [Trace Sample](http://localhost:9411/zipkin/?serviceName=automation-order)
         - execute run query
 - [Resource Monitor (Spring Admin)](http://localhost:9090)
-- [Batch, Task and Deploy Monitor (Spring Cloud Dataflow)](http://localhost:9393/dashboard) 
+- [Batch, Task and Deploy Monitor (Spring Cloud Dataflow)](http://localhost:9393/dashboard)
+
+## trouble shooting
+
+### not found spring cloud dataflow
+
+#### 1. remove containers use docker compose
+
+```shell
+docker-compose -f ./training_for_spring_cloud_features/docker-compose.yaml rm
+```
+
+#### 2. run built images use docker compose
+
+```shell
+docker-compose -f ./training_for_spring_cloud_features/docker-compose.yaml up
+```

@@ -214,6 +214,7 @@ services:
 
   mariadb:
     image: mariadb:10.6
+    restart: always
     container_name: dataflow-mariadb
     networks:
       - "service-net"
