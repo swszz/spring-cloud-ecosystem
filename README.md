@@ -15,8 +15,7 @@
 
 ### introduction
 
-- what is cloud native?
-- why cloud native?
+- [what is cloud native?](introduction/what_is_cloud_native.md)
 
 ### concept of cloud native features
 
