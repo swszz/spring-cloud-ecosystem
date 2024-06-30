@@ -19,16 +19,14 @@
 
 ### concept of cloud native features
 
-- distributed tracing
-- distributed/versioned configuration
-- service registration and discovery
-- routing
-- service-to-service calls
-- load balancing
-- circuit Breakers
-- distributed messaging
-- short lived microservices (tasks)
-- consumer-driven and producer-driven contract testing
+- [service registration and discovery](concept_of_cloud_native_features/service_registration_and_discovery.md)
+- [trace for distributed application](concept_of_cloud_native_features/trace_for_distributed_application.md)
+- [distributed/versioned configuration](concept_of_cloud_native_features/distributed_versioned_configuration.md)
+- [routing & load balancing](concept_of_cloud_native_features/routing_and_load_balancing.md)
+- [service-to-service calls](concept_of_cloud_native_features/service-to-service_calls.md)
+- [distributed messaging](concept_of_cloud_native_features/distributed_messaging.md)
+- [short lived microservices (tasks)](concept_of_cloud_native_features/short_lived_microservices.md)
+- [consumer-driven and producer-driven contract testing](concept_of_cloud_native_features/consumer-driven_and_producer-driven_contract_testing.md)
 
 ---
 
