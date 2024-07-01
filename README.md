@@ -71,13 +71,25 @@ docker-compose up
 
 ### 7. surf on spring cloud ecosystem infrastructures
 
-- [Service Discovery (Eureka)](http://localhost:8761)
-- [Trace System (Zipkin)](http://localhost:9411/zipkin)
-    - [Trace Sample](http://localhost:9411/zipkin/?serviceName=automation-order)
-        - execute run query
-- [Resource Monitor (Spring Admin)](http://localhost:9090)
-- [Batch, Task and Deploy Monitor (Spring Cloud Dataflow)](http://localhost:9393/dashboard)
+#### [Service Discovery (Eureka)](http://localhost:8761)
 
+![eureka](resources/images/spring-eureka.png)
+
+#### [Trace System (Zipkin)](http://localhost:9411/zipkin)
+
+![zipkin-trace](resources/images/zipkin-index.png)
+
+##### [Trace Sample (execute run query)](http://localhost:9411/zipkin/?serviceName=automation-order)
+
+![zipkin-trace](resources/images/zipkin-trace.png)
+
+#### [Resource Monitor (Spring Admin)](http://localhost:9090)
+
+![eureka](resources/images/spring-admin.png)
+
+#### [Batch, Task and Deploy Monitor (Spring Cloud Dataflow)](http://localhost:9393/dashboard)
+
+![spring-cloud-dataflow](resources/images/spring-cloud-dataflow.png)
 ---
 
 ## trouble shooting
