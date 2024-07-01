@@ -60,13 +60,13 @@ cd spring-cloud-ecosystem
 ### 5. build images use docker compose
 
 ```shell
-docker-compose -f ./training_for_spring_cloud_features/docker-compose.yaml build
+docker-compose build
 ```
 
 ### 6. run built images use docker compose
 
 ```shell
-docker-compose -f ./training_for_spring_cloud_features/docker-compose.yaml up
+docker-compose up
 ```
 
 ### 7. surf on spring cloud ecosystem infrastructures
@@ -87,11 +87,11 @@ docker-compose -f ./training_for_spring_cloud_features/docker-compose.yaml up
 #### 1. remove containers use docker compose
 
 ```shell
-docker-compose -f ./training_for_spring_cloud_features/docker-compose.yaml rm
+docker-compose rm -f
 ```
 
 #### 2. run built images use docker compose
 
 ```shell
-docker-compose -f ./training_for_spring_cloud_features/docker-compose.yaml up
+docker-compose up
 ```
