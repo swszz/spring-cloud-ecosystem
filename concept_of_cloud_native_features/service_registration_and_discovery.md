@@ -23,7 +23,7 @@
 
 ### 구현 방법
 
-#### Client Side Service Discovery
+#### Client Side Service Discovery (call service...)
 
 ![client_side_service_discovery](../resources/images/client_side_service_discovery.png)
 
@@ -40,7 +40,7 @@
 - 로드밸런싱에 대한 책임이 클라이언트에게 있다.
     - 비즈니스 로직 외의 가치에 대해서 고민해야 한다.
 
-#### Server Side Service Discovery
+#### Server Side Service Discovery (call service...)
 
 ![server_side_service_discovery](../resources/images/server_side_service_discovery.png)
 
